@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+/* Hack Club brand font (https://hackclub.com/brand) */
+@font-face {
+  font-family: "Phantom Sans";
+  src:
+    url("https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Regular.woff2") format("woff2"),
+    url("https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Phantom Sans";
+  src:
+    url("https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Italic.woff2") format("woff2"),
+    url("https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Phantom Sans";
+  src:
+    url("https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff2") format("woff2"),
+    url("https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Hack Club brand palette */
+@theme {
+  --color-hc-red: #ec3750;
+  --color-hc-orange: #ff8c37;
+  --color-hc-yellow: #f1c40f;
+  --color-hc-green: #33d6a6;
+  --color-hc-cyan: #5bc0de;
+  --color-hc-blue: #338eda;
+  --color-hc-purple: #a633d6;
+  --color-hc-muted: #8492a6;
+  --color-hc-dark: #17171d;
+
+  --font-sans: "Phantom Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-hc-blue);
+  color: var(--color-hc-dark);
+}
+
+.sky {
+  background: linear-gradient(180deg, #338eda 0%, #5bc0de 60%, #bfe9f7 100%);
+}
+
+/* Clouds drift left → right */
+@keyframes drift {
+  from {
+    transform: translateX(-25vw);
+  }
+  to {
+    transform: translateX(110vw);
+  }
+}
+.cloud {
+  animation: drift linear infinite;
+}
+
+/* Biplane propeller blur */
+@keyframes prop {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.15);
+  }
+}
+.plane-prop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: prop 0.12s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud,
+  .plane-prop {
+    animation: none;
+  }
+}
